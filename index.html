@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cassandra | Portfolio</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 6%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(5,5,5,.96);
+    border-bottom:1px solid #ff1493;
+
+    z-index:1000;
+
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-size:30px;
+    color:#ff1493;
+    font-family:cursive;
+    font-weight:bold;
+
+    text-shadow:0 0 15px #ff1493;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:28px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ff1493;
+
+    text-shadow:
+        0 0 10px #ff1493;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    padding:130px 8% 70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            #ff149322,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 50%,
+            #ff149322,
+            transparent 30%
+        );
+}
+
+.hero-container{
+    max-width:1100px;
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:70px;
+}
+
+/* =========================
+   PROFILE PICTURE
+========================= */
+
+.profile{
+    width:300px;
+    height:300px;
+
+    padding:6px;
+
+    border-radius:50%;
+
+    background:#ff1493;
+
+    box-shadow:
+        0 0 20px #ff1493,
+        0 0 50px #ff1493,
+        0 0 100px #ff149355;
+
+    flex-shrink:0;
+}
+
+.profile img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:5px solid #050505;
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero-text small{
+    color:#ff1493;
+
+    letter-spacing:3px;
+
+    font-weight:bold;
+}
+
+.hero-text h1{
+    font-size:65px;
+
+    margin:15px 0;
+}
+
+.hero-text h1 span{
+    color:#ff1493;
+
+    font-family:cursive;
+
+    text-shadow:
+        0 0 20px #ff1493;
+}
+
+.hero-text h2{
+    font-size:20px;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:#aaa;
+
+    line-height:1.8;
+
+    max-width:650px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+
+    padding:14px 25px;
+
+    margin:5px;
+
+    border-radius:6px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border:1px solid #ff1493;
+
+    transition:.3s;
+}
+
+.btn.primary{
+    background:#ff1493;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 0 25px #ff1493;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:90px 8%;
+
+    border-top:1px solid #25101d;
+}
+
+.section-title{
+    font-size:35px;
+
+    margin-bottom:40px;
+
+    border-left:6px solid #ff1493;
+
+    padding-left:15px;
+}
+
+.section-title::after{
+    content:"";
+
+    display:block;
+
+    width:45px;
+    height:3px;
+
+    background:#ff1493;
+
+    margin-top:10px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap:25px;
+}
+
+.about-text,
+.card{
+    background:#090909;
+
+    border:1px solid #6d1245;
+
+    border-radius:12px;
+
+    padding:30px;
+}
+
+.about-text{
+    color:#aaa;
+
+    line-height:1.8;
+}
+
+.card{
+    transition:.3s;
+}
+
+.card:hover{
+    border-color:#ff1493;
+
+    box-shadow:
+        0 0 25px #ff149322;
+
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:#ff1493;
+
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+/* =========================
+   HOBBIES
+========================= */
+
+.hobbies{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+.hobby{
+    text-align:center;
+
+    padding:30px 20px;
+
+    background:#090909;
+
+    border:1px solid #6d1245;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.hobby:hover{
+    border-color:#ff1493;
+
+    box-shadow:
+        0 0 25px #ff149322;
+
+    transform:translateY(-5px);
+}
+
+.hobby-icon{
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.hobby h3{
+    color:#ff1493;
+
+    margin-bottom:10px;
+}
+
+.hobby p{
+    color:#aaa;
+
+    line-height:1.6;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills{
+    display:grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:15px;
+}
+
+.skill{
+    background:#0a0a0a;
+
+    border:1px solid #681244;
+
+    padding:25px 15px;
+
+    border-radius:10px;
+
+    transition:.3s;
+}
+
+.skill:hover{
+    border-color:#ff1493;
+
+    box-shadow:
+        0 0 20px #ff149344;
+
+    transform:translateY(-5px);
+}
+
+.skill-icon{
+    font-size:25px;
+
+    font-weight:bold;
+
+    color:#ff1493;
+
+    margin-bottom:15px;
+
+    text-align:center;
+}
+
+.skill h3{
+    text-align:center;
+
+    margin-bottom:15px;
+}
+
+.bar{
+    width:100%;
+
+    height:7px;
+
+    background:#222;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+
+    background:#ff1493;
+
+    box-shadow:
+        0 0 10px #ff1493;
+}
+
+.html{
+    width:90%;
+}
+
+.css{
+    width:85%;
+}
+
+.javascript{
+    width:80%;
+}
+
+.php{
+    width:80%;
+}
+
+.mysql{
+    width:85%;
+}
+
+.agile{
+    width:75%;
+}
+
+/* =========================
+   PROJECT
+========================= */
+
+.project-container{
+    display:flex;
+
+    justify-content:center;
+}
+
+.project{
+    width:750px;
+
+    display:flex;
+
+    gap:25px;
+
+    padding:30px;
+
+    background:#090909;
+
+    border:1px solid #681244;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.project:hover{
+    border-color:#ff1493;
+
+    box-shadow:
+        0 0 30px #ff149333;
+
+    transform:translateY(-5px);
+}
+
+.project-icon{
+    font-size:60px;
+
+    color:#ff1493;
+}
+
+.project h3{
+    color:#ff1493;
+
+    font-size:23px;
+
+    margin-bottom:12px;
+}
+
+.project p{
+    color:#aaa;
+
+    line-height:1.7;
+
+    margin-bottom:15px;
+}
+
+.tags span{
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border:1px solid #ff1493;
+
+    border-radius:5px;
+
+    color:#ff1493;
+
+    margin-right:5px;
+
+    font-size:12px;
+}
+
+/* =========================
+   AGILE
+========================= */
+
+.agile-section{
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.agile-box{
+    max-width:750px;
+
+    width:100%;
+
+    padding:30px;
+
+    background:#090909;
+
+    border:1px solid #681244;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.agile-box:hover{
+    border-color:#ff1493;
+
+    box-shadow:
+        0 0 30px #ff149333;
+
+    transform:translateY(-5px);
+}
+
+.agile-box h3{
+    color:#ff1493;
+
+    font-size:23px;
+
+    margin-bottom:12px;
+}
+
+.agile-box p{
+    color:#aaa;
+
+    line-height:1.7;
+
+    margin-bottom:15px;
+}
+
+.agile-list{
+    list-style:none;
+
+    color:#aaa;
+
+    line-height:2;
+}
+
+.agile-list li::before{
+    content:"✓";
+
+    color:#ff1493;
+
+    font-weight:bold;
+
+    margin-right:10px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.connect{
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:30px;
+
+    background:#090909;
+
+    border:1px solid #681244;
+
+    border-radius:12px;
+}
+
+.github{
+    width:65px;
+    height:65px;
+
+    border:2px solid #ff1493;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    color:#ff1493;
+
+    box-shadow:
+        0 0 15px #ff149355;
+}
+
+.connect a{
+    color:white;
+
+    text-decoration:none;
+}
+
+.connect a:hover{
+    color:#ff1493;
+}
+
+.github-name{
+    color:#ff1493;
+
+    font-size:20px;
+
+    margin-bottom:5px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+
+    padding:40px;
+
+    border-top:1px solid #ff1493;
+
+    color:#777;
+}
+
+footer span{
+    color:#ff1493;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1100px){
+
+    .skills{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+    .hero-container{
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .skills{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .hobbies{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    nav{
+        padding:15px 4%;
+    }
+
+    nav ul{
+        gap:8px;
+    }
+
+    nav ul a{
+        font-size:10px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .profile{
+        width:210px;
+        height:210px;
+    }
+
+    .hero-text h1{
+        font-size:43px;
+    }
+
+    .hero-text h2{
+        font-size:14px;
+
+        letter-spacing:3px;
+    }
+
+    .skills,
+    .hobbies{
+        grid-template-columns:1fr;
+    }
+
+    .project{
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .connect{
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        Cassandra.
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#hobbies">Hobbies</a>
+        </li>
+
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+
+        <!-- PROFILE PICTURE -->
+
+        <div class="profile">
+
+            <img
+                src="40f7c5c4-74ae-4eaa-9d02-6ba76706c055.jpg"
+                alt="Cassandra Profile Picture"
+            >
+
+        </div>
+
+
+        <!-- HERO TEXT -->
+
+        <div class="hero-text">
+
+            <small>
+                WELCOME TO MY PORTFOLIO
+            </small>
+
+            <h1>
+                Hi, I'm
+                <span>Cassandra</span>
+            </h1>
+
+            <h2>
+                COMPUTER SCIENCE STUDENT
+            </h2>
+
+            <p>
+                I love creating websites, learning programming,
+                designing digital systems, and exploring new technologies.
+            </p>
+
+
+            <div class="buttons">
+
+                <a
+                    href="#about"
+                    class="btn primary"
+                >
+                    Explore My Portfolio →
+                </a>
+
+                <a
+                    href="#projects"
+                    class="btn"
+                >
+                    View My Work &lt;/&gt;
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <h2 class="section-title">
+        ABOUT ME
+    </h2>
+
+    <div class="about">
+
+
+        <div class="about-text">
+
+            <p>
+
+                I'm a Computer Science student who enjoys
+                learning new things and building creative
+                projects. I love turning ideas into reality
+                through code.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Who Am I?
+            </h3>
+
+            <p>
+
+                A passionate and dedicated student who enjoys
+                coding, exploring new technologies, and
+                improving my programming skills.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                My Goal
+            </h3>
+
+            <p>
+
+                To become a skilled developer and create
+                meaningful systems that can help people.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOBBIES
+========================= -->
+
+<section id="hobbies">
+
+    <h2 class="section-title">
+        HOBBIES / INTERESTS
+    </h2>
+
+    <div class="hobbies">
+
+
+        <div class="hobby">
+
+            <div class="hobby-icon">
+                🎧
+            </div>
+
+            <h3>
+                Listening to Music
+            </h3>
+
+            <p>
+                Helps me relax and stay motivated.
+            </p>
+
+        </div>
+
+
+        <div class="hobby">
+
+            <div class="hobby-icon">
+                🎲
+            </div>
+
+            <h3>
+                Playing Scrabble
+            </h3>
+
+            <p>
+                I enjoy playing Scrabble because it
+                challenges my vocabulary and thinking skills.
+            </p>
+
+        </div>
+
+
+        <div class="hobby">
+
+            <div class="hobby-icon">
+                💻
+            </div>
+
+            <h3>
+                Coding
+            </h3>
+
+            <p>
+                I enjoy writing code and creating useful
+                websites and applications.
+            </p>
+
+        </div>
+
+
+        <div class="hobby">
+
+            <div class="hobby-icon">
+                📚
+            </div>
+
+            <h3>
+                Learning
+            </h3>
+
+            <p>
+                I enjoy learning new skills and improving myself.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
+
+    <h2 class="section-title">
+        MY SKILLS
+    </h2>
+
+    <div class="skills">
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                HTML
+            </div>
+
+            <h3>
+                HTML
+            </h3>
+
+            <div class="bar">
+
+                <div class="progress html"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                CSS
+            </div>
+
+            <h3>
+                CSS
+            </h3>
+
+            <div class="bar">
+
+                <div class="progress css"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                JS
+            </div>
+
+            <h3>
+                JavaScript
+            </h3>
+
+            <div class="bar">
+
+                <div class="progress javascript"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                PHP
+            </div>
+
+            <h3>
+                PHP
+            </h3>
+
+            <div class="bar">
+
+                <div class="progress php"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                SQL
+            </div>
+
+            <h3>
+                MySQL
+            </h3>
+
+            <div class="bar">
+
+                <div class="progress mysql"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                AG
+            </div>
+
+            <h3>
+                Agile
+            </h3>
+
+            <div class="bar">
+
+                <div class="progress agile"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECT
+========================= -->
+
+<section id="projects">
+
+    <h2 class="section-title">
+        MY PROJECT
+    </h2>
+
+
+    <div class="project-container">
+
+        <div class="project">
+
+
+            <div class="project-icon">
+                &lt;/&gt;
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Personal Portfolio Website
+                </h3>
+
+                <p>
+
+                    A personal portfolio website created
+                    to showcase my profile, skills,
+                    hobbies, projects, and contact information.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>
+                        HTML
+                    </span>
+
+                    <span>
+                        CSS
+                    </span>
+
+                    <span>
+                        Web Design
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- AGILE -->
+
+    <div class="agile-section">
+
+        <div class="agile-box">
+
+            <h3>
+                Agile Methodology
+            </h3>
+
+            <p>
+
+                Agile is a flexible approach to software
+                development that focuses on teamwork,
+                continuous improvement, and delivering
+                projects step by step.
+
+            </p>
+
+
+            <ul class="agile-list">
+
+                <li>
+                    Planning
+                </li>
+
+                <li>
+                    Design
+                </li>
+
+                <li>
+                    Development
+                </li>
+
+                <li>
+                    Testing
+                </li>
+
+                <li>
+                    Review
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <h2 class="section-title">
+        LET'S CONNECT
+    </h2>
+
+
+    <div class="connect">
+
+
+        <div class="github">
+            ◉
+        </div>
+
+
+        <div>
+
+            <a
+                href="https://github.com/quenessndraquino26-hub"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="github-name">
+                    GitHub
+                </div>
+
+                <div>
+                    github.com/quenessndraquino26-hub
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    © 2026
+
+    <span>
+        Cassandra
+    </span>
+
+    . All Rights Reserved.
+
+</footer>
+
+
+</body>
+</html>
+Sent
+Compose
+Write to Jen Aquino
